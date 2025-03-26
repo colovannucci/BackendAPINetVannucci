@@ -1,5 +1,5 @@
 using BackendAPI.Services;
-using BackendAPI.Repositories;
+using BackendAPI.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BackendAPI.Configurations
