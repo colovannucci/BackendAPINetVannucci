@@ -17,6 +17,7 @@ namespace BackendAPI.Configurations
         {
             // Register services
             services.AddScoped<IWeatherService, WeatherService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             // Register repositories
             services.AddScoped<IWeatherRepository, WeatherRepository>();

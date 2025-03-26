@@ -12,25 +12,13 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.0.0" />
 
-    <!-- Entity Framework Core -->
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
-
-    <!-- AutoMapper -->
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
-
-    <!-- FluentValidation -->
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-
     <!-- Serilog -->
     <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
 
-    <!-- Testing -->
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="Moq" Version="4.18.4" />
-
-    <!-- CORS -->
-    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.3.0" />
+    <!-- Paquete para autenticación JWT -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+    <!-- Paquete para validación de tokens JWT -->
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.10.0" />
   </ItemGroup>
 
 </Project>

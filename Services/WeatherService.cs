@@ -26,6 +26,7 @@ namespace BackendAPI.Services
         {
             _logger.LogInformation("Generando el pronóstico del clima.");
 
+            // TODO: Usar datos reales en producción.
             var forecast = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -43,6 +44,7 @@ namespace BackendAPI.Services
         {
             _logger.LogInformation("Generando el pronóstico del clima para la ciudad: {City}.", city);
 
+            // TODO: Usar datos reales en producción.
             // Simular datos para algunas ciudades
             var citiesWithData = new List<string> { "New York", "London", "Tokyo" };
 
