@@ -20,11 +20,12 @@
             Controlador para manejar las solicitudes relacionadas con el clima.
             </summary>
         </member>
-        <member name="M:BackendAPI.Controllers.WeatherController.#ctor(BackendAPI.Services.IWeatherService)">
+        <member name="M:BackendAPI.Controllers.WeatherController.#ctor(BackendAPI.Services.IWeatherService,Microsoft.Extensions.Logging.ILogger{BackendAPI.Controllers.WeatherController})">
             <summary>
             Inicializa una nueva instancia de <see cref="T:BackendAPI.Controllers.WeatherController"/>.
             </summary>
             <param name="weatherService">El servicio de clima.</param>
+            <param name="logger">El servicio de logging.</param>
         </member>
         <member name="M:BackendAPI.Controllers.WeatherController.GetWeatherForecast">
             <summary>
@@ -77,6 +78,12 @@
             <summary>
             Implementación del servicio de clima.
             </summary>
+        </member>
+        <member name="M:BackendAPI.Services.WeatherService.#ctor(Microsoft.Extensions.Logging.ILogger{BackendAPI.Services.WeatherService})">
+            <summary>
+            Inicializa una nueva instancia de <see cref="T:BackendAPI.Services.WeatherService"/>.
+            </summary>
+            <param name="logger">El servicio de logging.</param>
         </member>
         <member name="M:BackendAPI.Services.WeatherService.GetWeatherForecast">
             <inheritdoc />

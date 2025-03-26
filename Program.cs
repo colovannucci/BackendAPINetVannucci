@@ -1,8 +1,18 @@
 using BackendAPI.Configurations;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurar Serilog
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+    
+// Reemplaza el sistema de logging predeterminado con Serilog
+builder.Host.UseSerilog();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -29,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BackendAPI v1"));
 }
 
-// Middleware
+// Middlewares
 if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
