@@ -1,5 +1,5 @@
 using BackendAPI.Services;
-using BackendAPI.Repositories;
+using BackendAPI.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BackendAPI.Configurations
@@ -17,6 +17,7 @@ namespace BackendAPI.Configurations
         {
             // Register services
             services.AddScoped<IWeatherService, WeatherService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             // Register repositories
             services.AddScoped<IWeatherRepository, WeatherRepository>();
