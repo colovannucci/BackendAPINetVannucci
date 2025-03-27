@@ -6,8 +6,21 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using BackendAPI.Middlewares;
+using BackendAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Validar las configuraciones de DbContext
+var connectionStringsSettings = builder.Configuration.GetSection("ConnectionStrings");
+var defaultConnection = connectionStringsSettings["DefaultConnection"];
+if (string.IsNullOrEmpty(defaultConnection))
+{
+    throw new InvalidOperationException("La cadena de conexión por defecto ('ConnectionStrings:DefaultConnection') no está configurada en appsettings.json.");
+}
+
+// Configurar DbContext con la cadena de conexión
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(defaultConnection));
 
 // Validar las configuraciones de JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -100,6 +113,13 @@ builder.Services.AddSwaggerGen(c =>
 DependencyInjectionConfig.RegisterServices(builder.Services);
 
 var app = builder.Build();
+
+// Aplicar migraciones automáticamente al iniciar la aplicación
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate(); // Aplica las migraciones pendientes
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
